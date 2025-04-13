@@ -1,6 +1,4 @@
-// components/ExperienceSection.tsx
-
-import Image from "next/image";
+import { BriefcaseIcon } from "@heroicons/react/16/solid";
 import FadeInOnScroll from "../animations/FadeInOnScroll";
 
 type Experience = {
@@ -76,25 +74,24 @@ const experiences: Experience[] = [
   },
 ];
 
-export default function ExperienceSection() {
-  return (
+type ExperienceSectionProps = {
+  isPrinting: boolean;
+};
 
+export default function ExperienceSection({ isPrinting }: ExperienceSectionProps) {
+  return (
     <section className="py-12 px-4 md:px-8 max-w-5xl mx-auto">
-      <h2 className="text-3xl font-bold mb-8">Experiência Profissional</h2>
+      <div className="flex items-start gap-2">
+        <BriefcaseIcon className="dark:text-green-500" width={50} />
+        <h2 className="text-3xl font-bold mb-8 dark:text-green-500">Experiência Profissional</h2>
+      </div>
       <div className="space-y-8">
         {experiences.map((exp, idx) => (
-          <div key={idx} className="flex gap-4 items-start">
-            <FadeInOnScroll>
-              <div className="min-w-[50px] h-[50px] relative">
-                <Image
-                  src={exp.logo}
-                  alt={exp.company}
-                  fill
-                  className="object-contain rounded"
-                />
-              </div>
+          <div key={idx} className="flex border px-4 py-8 rounded-2xl gap-4 items-start">
+            {isPrinting ? (
+              // Sem animação no modo impressão
               <div>
-                <h3 className="text-xl font-semibold">{exp.role}</h3>
+                <h3 className="text-xl font-semibold text-green-800 dark:text-green-500">{exp.role}</h3>
                 <p className="text-sm text-gray-600">{exp.company}</p>
                 <p className="text-sm text-gray-500">{exp.duration}</p>
                 <p className="text-sm text-gray-500 italic">{exp.location}</p>
@@ -103,14 +100,35 @@ export default function ExperienceSection() {
                   {exp.skills.map((skill, i) => (
                     <span
                       key={i}
-                      className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full"
+                      className="text-xs border bg-blue-100 text-blue-800 px-2 py-1 rounded-full"
                     >
                       {skill}
                     </span>
                   ))}
                 </div>
               </div>
-            </FadeInOnScroll>
+            ) : (
+              // Animação no modo normal
+              <FadeInOnScroll>
+                <div>
+                  <h3 className="text-xl font-semibold text-green-500">{exp.role}</h3>
+                  <p className="text-sm text-gray-600">{exp.company}</p>
+                  <p className="text-sm text-gray-500">{exp.duration}</p>
+                  <p className="text-sm text-gray-500 italic">{exp.location}</p>
+                  <p className="mt-2 text-sm dark:text-zinc-300">{exp.description}</p>
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {exp.skills.map((skill, i) => (
+                      <span
+                        key={i}
+                        className="text-xs border bg-blue-100 text-blue-800 px-2 py-1 rounded-full"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </FadeInOnScroll>
+            )}
           </div>
         ))}
       </div>

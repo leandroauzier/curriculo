@@ -2,24 +2,40 @@ import FadeInOnScroll from "@/components/animations/FadeInOnScroll";
 import Contact from "@/components/contact/contact";
 import Description from "@/components/description/description";
 import ExperienceSection from "@/components/experience/experienceSection";
+import Projects from "@/components/projects/projects";
 import UserPersonalInfo from "@/components/userPersonalInfo";
 
 export default function page() {
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center dark:bg-zinc-800">
       <div>
-        <p className="font-serif text-7xl py-22">
-          Bem vindos a meu currículo
-        </p>
+        <section id="#">
+          <p className="font-serif text-7xl py-22">
+            Bem vindos ao meu currículo
+          </p>
+        </section>
       </div>
       <FadeInOnScroll>
-        <UserPersonalInfo />
+        <section id="sobre">
+          <UserPersonalInfo />
+        </section>
       </FadeInOnScroll>
       <FadeInOnScroll>
-        <Description />
+      <section id="projetos" className="w-full flex justify-center bg-green-700">
+          <Description />
+        </section>
       </FadeInOnScroll>
-      <ExperienceSection />
-      <Contact />
+
+      <section id="experiencias">
+        <ExperienceSection isPrinting={false}/>
+      </section>
+
+      <section id="projetos" className="w-full flex justify-center">
+        <Projects />
+      </section>
+      <section id="contato" className="w-full bg-green-100 dark:bg-zinc-700">
+        <Contact />
+      </section>
     </div>
   );
 }

@@ -4,13 +4,17 @@ import 'react-social-icons/linkedin'
 import 'react-social-icons/mailto'
 import 'react-social-icons/github'
 import 'react-social-icons/whatsapp'
+import { EnvelopeIcon } from "@heroicons/react/20/solid";
 
 export default function Contact() {
     return (
-        <section className="p-10 max-w-4xl mx-auto">
-            <h2 className="section-title">Contato</h2>
-            <div className="flex space-x-4 items-center">
-                <div className="flex gap-4 items-center group">
+        <section className="p-10 max-w-4xl mx-auto w-full">
+            <div className="flex items-start gap-2">
+                <EnvelopeIcon className="dark:text-green-500" width={50} />
+                <h2 className="text-3xl font-bold mb-8 dark:text-green-500">Contato</h2>
+            </div>
+            <div className="grid grid-cols-2 gap-y-8 items-center">
+                <div className="flex gap-4 items-center group font-semibold">
                     <SocialIcon
                         className="group-hover:scale-110 transition-transform duration-300"
                         network="mailto"
@@ -19,11 +23,11 @@ export default function Contact() {
                         fgColor="#fff"
                         bgColor="#1e3a8a"
                     />
-                    <p className="opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                    <p className="dark:text-green-500 opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
                         Email
                     </p>
                 </div>
-                <div className="flex gap-4 items-center group">
+                <div className="flex gap-4 items-center group font-semibold">
                     <SocialIcon
                         className="group-hover:scale-110 transition-transform duration-300"
                         network="linkedin"
@@ -32,11 +36,11 @@ export default function Contact() {
                         fgColor="#fff"
                         bgColor="#0077b5"
                     />
-                    <p className="opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                    <p className="dark:text-green-500 opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
                         Linkedin
                     </p>
                 </div>
-                <div className="flex gap-4 items-center group">
+                <div className="flex gap-4 items-center group font-semibold">
                     <SocialIcon
                         className="group-hover:scale-110 transition-transform duration-300"
                         network="github"
@@ -45,11 +49,11 @@ export default function Contact() {
                         fgColor="#fff"
                         bgColor="#333"
                     />
-                    <p className="opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                    <p className="dark:text-green-500 opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
                         Github
                     </p>
                 </div>
-                <div className="flex gap-4 items-center group">
+                <div className="flex gap-4 items-center group font-semibold">
                     <SocialIcon
                         className="group-hover:scale-110 transition-transform duration-300"
                         network="whatsapp"
@@ -58,7 +62,7 @@ export default function Contact() {
                         fgColor="#fff"
                         bgColor="#25D366"
                     />
-                    <p className="opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                    <p className="dark:text-green-500 opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
                         Whatsapp
                     </p>
                 </div>
