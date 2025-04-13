@@ -10,8 +10,8 @@ export default function StackList({ classname }: StackListProps) {
         <div className={`${classname} flex flex-wrap gap-2 p-4 rounded-2xl`}>
             {[
                 { src: "/icons/react.png", alt: "React" },
-                { src: "/icons/Next.JS.png", alt: "NextJS" },
-                { src: "/icons/Nest.JS.png", alt: "NestJS" },
+                { src: "/icons/Next.js.png", alt: "NextJS" },
+                { src: "/icons/Nest.js.png", alt: "NestJS" },
                 { src: "/icons/prisma.webp", alt: "Prisma" },
                 { src: "/icons/Tailwind.png", alt: "Tailwind CSS" },
                 { src: "/icons/Python.png", alt: "Python" },
