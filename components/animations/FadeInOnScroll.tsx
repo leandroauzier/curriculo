@@ -22,7 +22,7 @@ export default function FadeInOnScroll({ children }: { children: React.ReactNode
       ref={ref}
       initial={{ opacity: 0, y: 30 }}
       animate={isVisible ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
     >
       {children}
     </motion.div>

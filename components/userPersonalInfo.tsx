@@ -1,15 +1,34 @@
 import Image from "next/image";
+import StackList from "./stack/stackList";
 
-type userPersonalInfoProps = {};
-
-export default function UserPersonalInfo({ }: userPersonalInfoProps) {
+export default function UserPersonalInfo() {
     return (
-        <div className="flex justify-center items-center border rounded-xl p-6 gap-4">
-            <Image className="rounded-full" alt="Leandro Sobrinho" src="/images/leandro.jpg" width={300} height={300} />
-            <div className="">
-                <h1 className="text-2xl">Leandro Sobrinho Auzier</h1>
-                <h3 className="text-xl">Desenvolvedor fullstack</h3>
+        <div className="flex flex-col lg:flex-row border items-center">
+            <div className="flex flex-col lg:flex-row justify-center items-center rounded-xl px-6 py-16 gap-4">
+                <Image
+                    className="rounded-full border-6 border-green-500"
+                    alt="Leandro Sobrinho"
+                    src="/images/leandro.png"
+                    width={300}
+                    height={300}
+                />
+                <div className="border-r-0 lg:border-r py-8">
+                    <div className="flex flex-col items-center">
+                        <h1 className="text-2xl">Leandro Sobrinho Auzier</h1>
+                        <h3 className="px-6 text-xl">Desenvolvedor fullstack</h3>
+                    </div>
+                </div>
+            </div>
+            <div className="font-semibold px-8 lg:px-2">
                 <p>Stack:</p>
+                <StackList />
+                <div className="py-6 font-semibold text-zinc-500">
+                    <a
+                        href="https://www.flaticon.com/free-icons/react"
+                        title="react icons">
+                        React icons created by Vectors Market - Flaticon
+                    </a>
+                </div>
             </div>
         </div>
     );

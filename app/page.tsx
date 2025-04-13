@@ -1,15 +1,16 @@
 import FadeInOnScroll from "@/components/animations/FadeInOnScroll";
 import Contact from "@/components/contact/contact";
 import Description from "@/components/description/description";
-import Experience from "@/components/experience/experience";
-import Stack from "@/components/stack/stack";
+import ExperienceSection from "@/components/experience/experienceSection";
 import UserPersonalInfo from "@/components/userPersonalInfo";
 
 export default function page() {
   return (
     <div className="flex flex-col justify-center items-center">
       <div>
-        <h1>Bem vindos a meu currículo</h1>
+        <p className="font-serif text-7xl py-22">
+          Bem vindos a meu currículo
+        </p>
       </div>
       <FadeInOnScroll>
         <UserPersonalInfo />
@@ -17,12 +18,7 @@ export default function page() {
       <FadeInOnScroll>
         <Description />
       </FadeInOnScroll>
-      <FadeInOnScroll>
-        <Stack />
-      </FadeInOnScroll>
-      <FadeInOnScroll>
-        <Experience />
-      </FadeInOnScroll>
+      <ExperienceSection />
       <Contact />
     </div>
   );

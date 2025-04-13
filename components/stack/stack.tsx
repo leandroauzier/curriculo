@@ -9,6 +9,7 @@ export default function Stack() {
                 <li>Next.js</li>
                 <li>TypeScript</li>
                 <li>TailwindCSS</li>
+                
             </ul>
         </section>
     );
