@@ -7,9 +7,7 @@ import UserPersonalInfo from "@/components/userPersonalInfo";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-type PrintProps = {};
-
-export default function Print({ }: PrintProps) {
+export default function Print() {
     const router = useRouter();
     const isPrinting = true;
     React.useEffect(() => {
@@ -48,7 +46,7 @@ export default function Print({ }: PrintProps) {
                 <Description />
             </section>
             <section id="experiencias">
-                <ExperienceSection isPrinting={false} />
+                <ExperienceSection isPrinting={isPrinting} />
             </section>
 
             <section id="projetos" className="w-full flex justify-center">
