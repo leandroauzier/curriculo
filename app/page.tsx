@@ -8,13 +8,6 @@ import UserPersonalInfo from "@/components/userPersonalInfo";
 export default function page() {
   return (
     <div className="flex flex-col justify-center items-center dark:bg-zinc-800">
-      <div>
-        <section id="#">
-          <p className="font-serif text-7xl py-22">
-            Bem vindos ao meu currículo
-          </p>
-        </section>
-      </div>
       <FadeInOnScroll>
         <section id="sobre">
           <UserPersonalInfo />
