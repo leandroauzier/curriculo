@@ -3,7 +3,7 @@ import StackList from "./stack/stackList";
 
 export default function UserPersonalInfo() {
     return (
-        <div className="flex flex-col lg:flex-row  items-center">
+        <div className="flex flex-col pt-10 lg:flex-row  items-center">
             <div className="flex flex-col lg:flex-row justify-center items-center rounded-xl px-6 py-16 gap-4">
                 <Image
                     className="rounded-full border-6 border-green-500"
