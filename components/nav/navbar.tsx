@@ -7,12 +7,10 @@ export default function Navbar() {
         <div>
             <nav className="print:hidden bg-white dark:bg-zinc-900 fixed w-full z-20 top-0 start-0 border-b border-zinc-200 dark:border-zinc-600">
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                    <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
                         <div className="flex h-10 w-10 items-center bg-green-500 text-white justify-center rounded-full bg-primary text-xl font-bold text-primary-foreground">L</div>
                         <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                             leandroauzier
                         </span>
-                    </a>
                     <div className="flex md:order-2 gap-4 space-x-3 md:space-x-0 rtl:space-x-reverse">
                         <ThemeToggle />
                         <button
