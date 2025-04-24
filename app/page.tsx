@@ -14,7 +14,7 @@ export default function page() {
         </section>
       </FadeInOnScroll>
       <FadeInOnScroll>
-      <section id="projetos" className="w-full flex justify-center bg-green-700">
+      <section id="descricao" className="w-full flex justify-center bg-green-700">
           <Description />
         </section>
       </FadeInOnScroll>

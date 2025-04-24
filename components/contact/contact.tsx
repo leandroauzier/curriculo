@@ -23,7 +23,7 @@ export default function Contact() {
                         fgColor="#fff"
                         bgColor="#1e3a8a"
                     />
-                    <p className="dark:text-green-500 opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                    <p className="dark:text-green-500">
                         Email
                     </p>
                 </div>
@@ -36,7 +36,7 @@ export default function Contact() {
                         fgColor="#fff"
                         bgColor="#0077b5"
                     />
-                    <p className="dark:text-green-500 opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                    <p className="dark:text-green-500">
                         Linkedin
                     </p>
                 </div>
@@ -49,7 +49,7 @@ export default function Contact() {
                         fgColor="#fff"
                         bgColor="#333"
                     />
-                    <p className="dark:text-green-500 opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                    <p className="dark:text-green-500">
                         Github
                     </p>
                 </div>
@@ -62,7 +62,7 @@ export default function Contact() {
                         fgColor="#fff"
                         bgColor="#25D366"
                     />
-                    <p className="dark:text-green-500 opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                    <p className="dark:text-green-500">
                         Whatsapp
                     </p>
                 </div>
