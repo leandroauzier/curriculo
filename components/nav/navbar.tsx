@@ -1,12 +1,16 @@
 'use client'
-import { useRouter } from "next/navigation";
+
 import { useState } from "react";
 import ThemeToggle from "../darktheme/darktheme";
 import { AnimatePresence, motion } from "framer-motion";
+import { Download } from "lucide-react";
 
 export default function Navbar() {
-    const router = useRouter();
     const [isOpen, setIsOpen] = useState(false);
+
+    const handlePrint = () => {
+        window.print();
+    };
 
     return (
         <div>
@@ -23,10 +27,13 @@ export default function Navbar() {
                     <div className="flex md:order-2 gap-4">
                         <ThemeToggle />
                         <button
-                            onClick={() => router.push("/print")}
-                            className="print:hidden text-white bg-green-600 hover:bg-green-700 px-4 py-2 rounded-md"
+                            onClick={handlePrint}
+                            className="print:hidden flex gap-2 text-white bg-green-600 hover:bg-green-700 px-4 py-2 rounded-md"
                         >
-                            Imprimir Currículo
+                            <Download />
+                            <span>
+                                Imprimir Curriculo
+                            </span>
                         </button>
                         <button
                             onClick={() => setIsOpen(!isOpen)}
@@ -41,7 +48,7 @@ export default function Navbar() {
                         </button>
                     </div>
 
-                    {/* animação do colapse button */}
+                    {/* animacao do colapse button */}
                     <AnimatePresence>
                         {isOpen && (
                             <motion.div
@@ -54,7 +61,7 @@ export default function Navbar() {
                                 <ul className="flex flex-col p-4 font-medium border border-zinc-100 rounded-lg bg-zinc-50 dark:bg-zinc-800 dark:border-zinc-700">
                                     <li><a href="#" className="block py-2 px-3 text-white bg-green-700 rounded-sm">Home</a></li>
                                     <li><a href="#sobre" className="block py-2 px-3 text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-sm">Sobre mim</a></li>
-                                    <li><a href="#experiencias" className="block py-2 px-3 text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-sm">Experiências</a></li>
+                                    <li><a href="#experiencias" className="block py-2 px-3 text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-sm">Experiencias</a></li>
                                     <li><a href="#projetos" className="block py-2 px-3 text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-sm">Projetos</a></li>
                                     <li><a href="#contato" className="block py-2 px-3 text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-sm">Contato</a></li>
                                 </ul>

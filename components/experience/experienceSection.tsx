@@ -1,5 +1,6 @@
 import { BriefcaseIcon } from "@heroicons/react/16/solid";
 import FadeInOnScroll from "../animations/FadeInOnScroll";
+import { formatDurationFromText } from "@/utils/FormatDuration";
 
 type Experience = {
   company: string;
@@ -15,8 +16,8 @@ const experiences: Experience[] = [
   {
     company: "Tribunal de Contas do Estado do Amapá",
     role: "FullStack Developer",
-    duration: "fev de 2024 - o momento · 1 ano 3 meses",
-    location: "Macapá, Amapá, Brasil · Presencial",
+    duration: formatDurationFromText("fev de 2024", undefined, true),
+    location: "Macapá, Amapá, Brasil - Presencial",
     description:
       "Criação de sistemas e soluções públicas em React, NextJS e Prisma ORM para o Tribunal de Contas do Estado do Amapá.",
     skills: ["React", "NextJS", "Prisma", "API REST", "Linux"],
@@ -25,8 +26,8 @@ const experiences: Experience[] = [
   {
     company: "Tributei",
     role: "Back End Developer",
-    duration: "fev de 2023 - dez de 2023 · 11 meses",
-    location: "Macapá, Amapá, Brasil · Presencial",
+    duration: "fev de 2023 - dez de 2023 - 11 meses",
+    location: "Macapá, Amapá, Brasil - Presencial",
     description:
       "Desenvolvimento de funcionalidades para sistema de automação fiscal, máquina de captura XML para notas fiscais, suporte a sistema, API em Laravel, Load Balance, MongoDB e MySQL.",
     skills: ["PHP", "Laravel", "MongoDB", "MySQL", "Linux"],
@@ -35,8 +36,8 @@ const experiences: Experience[] = [
   {
     company: "Score Milk",
     role: "Backend Developer",
-    duration: "dez de 2021 - jun de 2022 · 7 meses",
-    location: "Remoto · Estados Unidos",
+    duration: "dez de 2021 - jun de 2022 - 7 meses",
+    location: "Remoto - Estados Unidos",
     description:
       "Automação de processos com criação de APIs REST em Django e rastreador de dados para redes sociais.",
     skills: ["Django", "API REST"],
@@ -45,7 +46,7 @@ const experiences: Experience[] = [
   {
     company: "Cluster",
     role: "Desenvolvedor Python Backend",
-    duration: "mai de 2021 - set de 2021 · 5 meses",
+    duration: "mai de 2021 - set de 2021 - 5 meses",
     location: "Macapá, Amapá, Brasil",
     description:
       "Desenvolvimento de sistema em Django para análise de dados do varejo, uso de Docker e Pandas, integração com banco Oracle.",
@@ -55,7 +56,7 @@ const experiences: Experience[] = [
   {
     company: "Monte",
     role: "Analista BI Júnior",
-    duration: "out de 2020 - mai de 2021 · 8 meses",
+    duration: "out de 2020 - mai de 2021 - 8 meses",
     location: "Macapá, Amapá, Brasil",
     description:
       "Gerenciamento de plataforma BI, elaboração de relatórios, análise de dados e suporte a colaboradores.",
@@ -74,11 +75,7 @@ const experiences: Experience[] = [
   },
 ];
 
-type ExperienceSectionProps = {
-  isPrinting: boolean;
-};
-
-export default function ExperienceSection({ isPrinting }: ExperienceSectionProps) {
+export default function ExperienceSection() {
   return (
     <section className="py-12 px-4 md:px-8 max-w-5xl mx-auto">
       <div className="flex items-start gap-2">
@@ -88,27 +85,24 @@ export default function ExperienceSection({ isPrinting }: ExperienceSectionProps
       <div className="space-y-8">
         {experiences.map((exp, idx) => (
           <div key={idx} className="flex border px-4 py-8 rounded-2xl gap-4 items-start">
-            {isPrinting ? (
-              // Sem animação no modo impressão
-              <div>
-                <h3 className="text-xl font-semibold text-green-800 dark:text-green-500">{exp.role}</h3>
-                <p className="text-sm text-gray-600">{exp.company}</p>
-                <p className="text-sm text-gray-500">{exp.duration}</p>
-                <p className="text-sm text-gray-500 italic">{exp.location}</p>
-                <p className="mt-2 text-sm">{exp.description}</p>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  {exp.skills.map((skill, i) => (
-                    <span
-                      key={i}
-                      className="text-xs border bg-blue-100 text-blue-800 px-2 py-1 rounded-full"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+            <div className="hidden print:block">
+              <h3 className="text-xl font-semibold text-green-800 dark:text-green-500">{exp.role}</h3>
+              <p className="text-sm text-gray-600">{exp.company}</p>
+              <p className="text-sm text-gray-500">{exp.duration}</p>
+              <p className="text-sm text-gray-500 italic">{exp.location}</p>
+              <p className="mt-2 text-sm">{exp.description}</p>
+              <div className="flex flex-wrap gap-2 mt-2">
+                {exp.skills.map((skill, i) => (
+                  <span
+                    key={i}
+                    className="text-xs border bg-blue-100 text-blue-800 px-2 py-1 rounded-full"
+                  >
+                    {skill}
+                  </span>
+                ))}
               </div>
-            ) : (
-              // Animação no modo normal
+            </div>
+            <div className="print:hidden">
               <FadeInOnScroll>
                 <div>
                   <h3 className="text-xl font-semibold text-green-500">{exp.role}</h3>
@@ -128,7 +122,7 @@ export default function ExperienceSection({ isPrinting }: ExperienceSectionProps
                   </div>
                 </div>
               </FadeInOnScroll>
-            )}
+            </div>
           </div>
         ))}
       </div>

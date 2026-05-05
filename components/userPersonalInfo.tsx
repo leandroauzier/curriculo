@@ -14,8 +14,8 @@ export default function UserPersonalInfo() {
                 />
                 <div className="border-r-0 lg:border-r py-8">
                     <div className="flex flex-col items-center">
-                        <h1 className="text-2xl bg-transparent dark:text-green-500">Leandro Sobrinho Auzier</h1>
-                        <h3 className="px-6 text-xl dark:text-green-500">Desenvolvedor fullstack</h3>
+                        <h1 className="text-2xl bg-transparent !text-zinc-900 print:!text-black dark:!text-green-500">Leandro Sobrinho Auzier</h1>
+                        <h3 className="px-6 text-xl text-zinc-900 print:!text-black dark:!text-green-500">Desenvolvedor fullstack</h3>
                     </div>
                 </div>
             </div>
