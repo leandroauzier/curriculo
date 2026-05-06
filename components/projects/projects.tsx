@@ -15,6 +15,12 @@ const projects: ProjectCardProps[] = [
         repositoryUrl: "https://github.com/leandroauzier/ceu-das-cores-ui",
         technologies: ["TypeScript", "CSS", "JavaScript"],
     },
+    {
+        name: "VigiaGov",
+        description: "Projeto inovador que tranforma inteligência pública para decisões mais rápidas em saúde",
+        repositoryUrl: "https://github.com/leandroauzier/vigiaGov",
+        technologies: ["TypeScript", "Python", "JavaScript", "SQL"],
+    },
 ];
 
 export default function Projects() {
