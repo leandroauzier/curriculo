@@ -3,8 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7f8fb;
+  --foreground: #172033;
+  --muted: #667085;
+  --line: #e5e7eb;
+  --accent: #16a36a;
+  --accent-dark: #087443;
 }
 
 @theme inline {
@@ -14,50 +18,85 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: sans-serif;
-}
-
-h1 {
-  font-size: 2.5rem;
-  font-weight: 800;
-  text-align: center;
-  font-family: sans-serif;
-  background: var(--background, #1e3a8a);
-  color: var(--foreground, #ffffff);
-  padding: 1.5rem;
-}
-
-h2 {
-  font-size: 2rem;
-  font-family: sans-serif;
-  font-weight: 700;
-  border-bottom: 2px solid #d1d5db;
-  padding-bottom: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-h3 {
-  font-size: 1.5rem;
-  font-family: sans-serif;
-  font-weight: 600;
-}
-
-.section-title {
-  @apply text-2xl font-bold border-b-2 border-gray-300 pb-2 mb-4;
+* {
+  box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(
+      circle at 12% 8%,
+      rgba(22, 163, 106, 0.08),
+      transparent 28rem
+    ),
+    var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, sans-serif;
+}
+
+.dark body {
+  background:
+    radial-gradient(
+      circle at 12% 8%,
+      rgba(16, 185, 129, 0.08),
+      transparent 28rem
+    ),
+    #09090b;
+  color: #f4f4f5;
+}
+
+::selection {
+  background: #b8f1d5;
+  color: #064e3b;
+}
+
+@layer components {
+  .section-shell {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 6rem 1.25rem;
+  }
+  .section-heading {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+    margin-bottom: 2.5rem;
+  }
+  .section-heading-icon {
+    color: var(--accent);
+    width: 2.4rem;
+    height: 2.4rem;
+    padding: 0.45rem;
+    border-radius: 0.8rem;
+    background: #dcfce7;
+  }
+  .section-kicker {
+    color: var(--accent-dark);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .section-title {
+    margin: 0.3rem 0 0;
+    color: #172033;
+    font-size: clamp(1.7rem, 3vw, 2.35rem);
+    line-height: 1.15;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+  }
+  .dark .section-title {
+    color: #f0fdf4;
+  }
+  .dark .section-heading-icon {
+    color: #86efac;
+    background: rgba(22, 101, 52, 0.3);
+  }
 }
 
 @page {
@@ -70,18 +109,54 @@ html {
   body {
     margin: 0 !important;
     padding: 0 !important;
-    background: #ffffff !important;
-    color: #000000 !important;
+    background: #fff !important;
+    color: #000 !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
-
   .print-document {
-    width: 100%;
-    margin: 0 auto;
-    padding: 12mm;
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
-
+  nav,
+  footer,
+  .print\:hidden {
+    display: none !important;
+  }
+  #sobre {
+    break-after: page;
+    page-break-after: always;
+  }
+  #descricao,
+  #experiencias,
+  #projetos,
+  #contato {
+    break-before: page;
+    page-break-before: always;
+  }
+  #descricao,
+  #contato {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  #sobre > div {
+    min-height: auto !important;
+    padding-top: 16mm !important;
+    padding-bottom: 16mm !important;
+  }
+  .section-shell {
+    max-width: none !important;
+    padding: 16mm 12mm !important;
+  }
+  #contato .section-shell {
+    padding-bottom: 12mm !important;
+  }
+  #contato .grid {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
   .print-avoid-break {
     break-inside: avoid-page;
     page-break-inside: avoid;

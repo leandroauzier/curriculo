@@ -1,44 +1,70 @@
-import React from "react";
 import { CodeBracketIcon } from "@heroicons/react/20/solid";
+import { getGithubRepositories } from "@/lib/github";
 import ProjectCard, { type ProjectCardProps } from "./ProjectCard";
 
-const projects: ProjectCardProps[] = [
-    {
-        name: "LandingPage",
-        description: "Este é um projeto demonstrativo de uma landing page, desenvolvido com foco em apresentar um modelo moderno e responsivo para empresas.",
-        repositoryUrl: "https://github.com/leandroauzier/LandingPage",
-        technologies: ["TypeScript", "CSS", "JavaScript"],
-    },
-    {
-        name: "Céu das Cores",
-        description: "Este é um projeto demonstrativo de uma landing page, desenvolvido com foco em apresentar um modelo moderno e responsivo para empresas.",
-        repositoryUrl: "https://github.com/leandroauzier/ceu-das-cores-ui",
-        technologies: ["TypeScript", "CSS", "JavaScript"],
-    },
-    {
-        name: "VigiaGov",
-        description: "Projeto inovador que tranforma inteligência pública para decisões mais rápidas em saúde",
-        repositoryUrl: "https://github.com/leandroauzier/vigiaGov",
-        technologies: ["TypeScript", "Python", "JavaScript", "SQL"],
-    },
+const fallbackProjects: ProjectCardProps[] = [
+  {
+    name: "LandingPage",
+    description:
+      "Projeto demonstrativo de uma landing page moderna e responsiva.",
+    repositoryUrl: "https://github.com/leandroauzier/LandingPage",
+    technologies: ["TypeScript", "CSS", "JavaScript"],
+  },
+  {
+    name: "Céu das Cores",
+    description:
+      "Projeto demonstrativo de uma landing page moderna e responsiva.",
+    repositoryUrl: "https://github.com/leandroauzier/ceu-das-cores-ui",
+    technologies: ["TypeScript", "CSS", "JavaScript"],
+  },
+  {
+    name: "VigiaGov",
+    description:
+      "Projeto de inteligência pública para decisões mais rápidas em saúde.",
+    repositoryUrl: "https://github.com/leandroauzier/vigiaGov",
+    technologies: ["TypeScript", "Python", "JavaScript", "SQL"],
+  },
 ];
 
-export default function Projects() {
-    return (
-        <div className="py-24 px-4 md:px-8 max-w-5xl w-full">
-            <div className="flex items-start gap-2">
-                <CodeBracketIcon className="dark:text-green-500" width={50} />
-                <h2 className="text-3xl font-bold mb-8 dark:text-green-500">Meus projetos</h2>
-            </div>
+export default async function Projects() {
+  let projects: ProjectCardProps[] = fallbackProjects;
 
-            <div className="grid gap-6 md:grid-cols-2">
-                {projects.map((project) => (
-                    <ProjectCard
-                        key={project.repositoryUrl}
-                        {...project}
-                    />
-                ))}
-            </div>
-        </div>
-    );
+  try {
+    const repositories = await getGithubRepositories();
+
+    if (repositories.length > 0) {
+      projects = repositories.map((repository) => ({
+        name: repository.name,
+        description:
+          repository.description ?? "Projeto sem descrição no GitHub.",
+        repositoryUrl: repository.html_url,
+        technologies: [
+          ...new Set([
+            ...(repository.language ? [repository.language] : []),
+            ...(repository.topics ?? []),
+          ]),
+        ],
+      }));
+    }
+  } catch (error) {
+    console.error("Erro ao carregar repositórios do GitHub:", error);
+  }
+
+  return (
+    <div className="section-shell">
+      <div className="section-heading">
+        <CodeBracketIcon className="section-heading-icon" />
+        <div><p className="section-kicker">Trabalho selecionado</p><h2 className="section-title">Meus projetos</h2></div>
+      </div>
+
+      <div className="grid gap-6 md:grid-cols-2">
+        {projects.map((project) => (
+          <ProjectCard
+            key={project.repositoryUrl}
+            {...project}
+          />
+        ))}
+      </div>
+    </div>
+  );
 }

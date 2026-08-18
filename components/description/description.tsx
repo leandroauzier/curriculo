@@ -1,20 +1,12 @@
 import { UserCircleIcon } from "@heroicons/react/20/solid";
-import React from "react";
 
 export default function Description() {
     return (
-        <div className="p-10 text-white">
-            <div className="container">
-                <div className="flex items-start gap-2">
-                    <UserCircleIcon width={60} />
-                    <h2 className="text-xl font-semibold mb-4">Sobre Mim</h2>
-                </div>
-                <div className="text-justify gap-4">
-                    <p>Graduado em Ciência da Computação, atuo na área de desenvolvimento web e análise de dados, com experiência em projetos que envolvem tanto o front-end quanto o back-end. Já trabalhei com APIs REST utilizando Django, Flask e PHP (Laravel), além de integração com web services e manipulação de bancos de dados SQL e NoSQL.</p>
-                    <p>Tenho conhecimento prático em tecnologias como Node.js, Next.js, Prisma ORM, e na utilização de Docker para containerização e deploy de aplicações. Também possuo familiaridade com ambientes de orquestração como o OpenShift e já desenvolvi soluções em C#, o que me permite transitar entre diferentes stacks com facilidade.</p>
-                    <p>Sou movido por desafios e tenho como foco a entrega de soluções escaláveis, seguras e orientadas à performance. Busco constantemente aprender novas tecnologias e contribuir em equipes multidisciplinares, agregando valor por meio da tecnologia.</p>
-                </div>
+        <div className="section-shell !py-20 text-white">
+            <div className="grid items-center gap-10 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
+                <div className="lg:justify-self-center"><div className="section-heading mb-0"><UserCircleIcon className="section-heading-icon !bg-emerald-900/50 !text-emerald-200" /><div><p className="section-kicker !text-emerald-200">Perfil profissional</p><h2 className="section-title !text-white">Sobre mim</h2></div></div></div>
+                <div className="max-w-2xl border-l border-emerald-200/20 pl-6 text-lg leading-8 text-emerald-50 lg:pl-10"><p>Desenvolvedor Full-Stack, formado em Ciência da Computação, com experiência na construção de aplicações web em produção, serviços backend, APIs REST, automação de processos e sistemas orientados a dados. Atuo em todo o ciclo de desenvolvimento — da modelagem de banco de dados e integrações a implantações em containers e suporte em produção.</p><p className="mt-5 text-base leading-7 text-emerald-100/75">Responsável pela gestão e manutenção de mais de 10 projetos de software, incluindo sistemas utilizados por mais de 300 usuários, com foco em desenvolvimento backend, integração de sistemas, automação, segurança e confiabilidade.</p></div>
             </div>
         </div>
-    )
+    );
 }
